@@ -16,8 +16,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return CustomInheritedWidget(
-      counter: 50,
+    return StateWidget(
       child: MaterialApp(
         home: MainPage(title: 'couter'),
       ),

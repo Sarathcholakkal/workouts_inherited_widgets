@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_inherited_widget/button_widget.dart';
+import 'package:flutter_inherited_widget/couter_page.dart';
 import 'package:flutter_inherited_widget/custom_inherited_widget.dart';
 
 class MainPage extends StatefulWidget {
@@ -16,7 +18,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
-    final counter = CustomInheritedWidget.of(context);
+    final counter = CustomInheritedWidget.of(context).counter;
 
     return Scaffold(
       appBar: AppBar(
@@ -31,6 +33,13 @@ class _MainPageState extends State<MainPage> {
               style: const TextStyle(fontSize: 100),
             ),
             const SizedBox(height: 24),
+            ButtonWidget(
+              text: 'Change Counter',
+              onClicked: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const CounterPage()),
+              ),
+            ),
           ],
         ),
       ),
@@ -38,13 +47,7 @@ class _MainPageState extends State<MainPage> {
   }
 }
 
-    //  ButtonWidget(
-    //           text: 'Change Counter',
-    //           onClicked: () => Navigator.push(
-    //             context,
-    //             MaterialPageRoute(builder: (context) => const CounterPage()),
-    //           ),
-    //         ),
+    
 
 
   //           const SizedBox(height: 47),

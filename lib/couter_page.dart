@@ -1,46 +1,66 @@
-// import 'package:flutter/material.dart';
-// // Ensure this file exists
-// import 'button_widget.dart'; // Ensure this file exists
+import 'package:flutter/material.dart';
+import 'package:flutter_inherited_widget/custom_inherited_widget.dart';
+// Ensure this file exists
+import 'button_widget.dart'; // Ensure this file exists
 
-// class CounterPage extends StatefulWidget {
-//   const CounterPage({Key? key}) : super(key: key);
+class CounterPage extends StatefulWidget {
+  const CounterPage({Key? key}) : super(key: key);
 
-//   @override
-//   _CounterPageState createState() => _CounterPageState();
-// }
+  @override
+  _CounterPageState createState() => _CounterPageState();
+}
 
-// class _CounterPageState extends State<CounterPage> {
-//   final controller = TextEditingController();
+class _CounterPageState extends State<CounterPage> {
+  final controller = TextEditingController();
 
-//   @override
-//   void dispose() {
-//     controller.dispose(); // Always dispose your controller
-//     super.dispose();
-//   }
+  @override
+  void dispose() {
+    controller.dispose(); // Always dispose your controller
+    super.dispose();
+  }
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: const Text('Title'),
-//       ),
-//       body: Center(
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: <Widget>[
-//             Container(
-//               margin: const EdgeInsets.symmetric(horizontal: 48),
-//               child: buildTextField(onSubmitted: setCounter),
-//             ),
-//             const SizedBox(height: 24),
-       
-//             const SizedBox(height: 64),
-        
-//           ],
-//         ),
-//       ),
-//     );
-//   }
+  @override
+  Widget build(BuildContext context) {
+    void incrementCounter() {
+      final provider = CustomInheritedWidget.of(context);
+      provider.increamentCounter();
+      Navigator.pop(context);
+    }
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Title'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const SizedBox(height: 24),
+            ButtonWidget(
+              text: 'Increment Counter',
+              onClicked: incrementCounter,
+            ),
+            const SizedBox(height: 64),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //   Widget buildTextField({
 //     required ValueChanged<String> onSubmitted,
@@ -67,14 +87,13 @@
 
  
 // }
+//  Container(
+//               margin: const EdgeInsets.symmetric(horizontal: 48),
+//               child: buildTextField(onSubmitted: setCounter),
+//             )
 
 
 
- // void incrementCounter() {
-  //   final provider = StateInheritedWidget.of(context);
-  //   provider.incrementCounter();
-  //   Navigator.pop(context);
-  // }
 
   // void setCounter(String value) {
   //   final counter = int.tryParse(value);
@@ -92,13 +111,7 @@
 
 
 
-
-
-      // ButtonWidget(
-      //         text: 'Increment Counter',
-      //         onClicked: incrementCounter,
-      //       ),
-
+    
 
 
 
@@ -107,3 +120,4 @@
           //     text: 'Update Counter',
           //     onClicked: () => setCounter(controller.text),
           //   ),
+          //}
